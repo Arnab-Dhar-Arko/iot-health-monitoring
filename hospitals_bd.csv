@@ -1,0 +1,22 @@
+name,city,ownership,iot_enabled,iot_features,contact,source,verification_status
+United Hospital,Dhaka,Private,True,Telemedicine portal; possible RPM pilots (verify). EHR in use.,+880-xxxx,https://www.unitedhospital.com.bd,verify_RPM
+Square Hospital,Dhaka,Private,True,Teleconsultation services; digital patient portal. RPM status TBD.,+880-xxxx,https://www.squarehospital.com,verify_RPM
+Evercare Hospital Dhaka,Dhaka,Private,True,Telemedicine & online appointments; EHR systems. RPM status TBD.,+880-xxxx,https://www.evercarebd.com/dhaka,verify_RPM
+Labaid Cardiac Hospital,Dhaka,Private,True,Telemedicine/video consults; digital diagnostics network.,+880-xxxx,https://www.labaid.com.bd,verify_RPM
+Ibn Sina Hospital,Dhaka,Private,False,Diagnostics network; digital reports. Telemedicine status TBD.,+880-xxxx,https://www.ibnsinatrust.com,verify_telemed
+Popular Medical College & Hospital,Dhaka,Private,False,Online reporting & appointments; telemedicine TBD.,+880-xxxx,https://www.popular-hospital.com,verify_telemed
+BSMMU (Bangabandhu Sheikh Mujib Medical University),Dhaka,Public,True,National telemedicine hub (verify current scope); academic hospital.,+880-xxxx,https://bsmmu.edu.bd,verify_scope
+NICVD (National Institute of Cardiovascular Diseases),Dhaka,Public,False,Cardiac specialty institute; digital systems evolving; RPM TBD.,+880-xxxx,http://nicvd.gov.bd,verify_telemed
+National Institute of Neurosciences,Dhaka,Public,False,Neurology/neurosurgery; digital imaging; telemedicine TBD.,+880-xxxx,https://nins.gov.bd,verify_telemed
+Dhaka Medical College Hospital,Dhaka,Public,False,Tertiary care; digitalization underway; telemedicine TBD.,+880-xxxx,https://dmch.gov.bd,verify_telemed
+Chittagong Medical College Hospital,Chattogram,Public,False,Tertiary care; digitalization underway; telemedicine TBD.,+880-xxxx,https://cmc.gov.bd,verify_telemed
+Rajshahi Medical College Hospital,Rajshahi,Public,False,Tertiary care; telemedicine TBD.,+880-xxxx,https://rmc.gov.bd,verify_telemed
+Khulna Medical College Hospital,Khulna,Public,False,Tertiary care; telemedicine TBD.,+880-xxxx,https://kmch.gov.bd,verify_telemed
+Sylhet MAG Osmani Medical College Hospital,Sylhet,Public,False,Tertiary care; telemedicine TBD.,+880-xxxx,https://somc.gov.bd,verify_telemed
+Mymensingh Medical College Hospital,Mymensingh,Public,False,Tertiary care; telemedicine TBD.,+880-xxxx,https://mmch.gov.bd,verify_telemed
+Rangpur Medical College Hospital,Rangpur,Public,False,Tertiary care; telemedicine TBD.,+880-xxxx,https://rmchr.gov.bd,verify_telemed
+Sher-e-Bangla Medical College Hospital,Barishal,Public,False,Tertiary care; telemedicine TBD.,+880-xxxx,https://sbmc.gov.bd,verify_telemed
+Cumilla Medical College Hospital,Cumilla,Public,False,Tertiary care; telemedicine TBD.,+880-xxxx,https://comc.gov.bd,verify_telemed
+"icddr,b Hospital (Cholera/enteric diseases)",Dhaka,NGO,True,Digital surveillance & research systems; mHealth pilots historically.,+880-xxxx,https://www.icddrb.org,verify_scope
+DGHS Telemedicine Program (national),Multiple,Public,True,16263 Health Call Center; multi-tier telemedicine network (verify current coverage).,16263,https://dghs.gov.bd,verify_scope
+CMED Health (IoT RPM provider),National,Private,True,IoT-enabled remote patient monitoring platform; devices + cloud.,+880-xxxx,https://www.cmed.com.bd,vendor_profile
