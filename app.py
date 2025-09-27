@@ -46,18 +46,44 @@ def compute_status(hr, spo2, temp, thr_hr=120, thr_spo2=90, thr_temp=38.0):
     except Exception:
         return "Normal"
 
+# Normalize incoming CSV headers to expected ones
+COLUMN_ALIASES = {
+    "Time": ["time", "timestamp", "date_time", "datetime"],
+    "HR (bpm)": ["hr", "heart_rate", "heart rate", "hr (bpm)", "heartrate", "heart_rate_bpm"],
+    "SpO₂ (%)": ["spo2", "spO2", "spO2 (%)", "spo (%)", "spo2_percent", "oxygen", "SpO (%)"],
+    "Temp (°C)": ["temp", "temperature", "temp (c)", "temperature_c", "temp_c", "body_temp", "Temp (C)"]
+}
+
+def normalize_columns(df: pd.DataFrame) -> pd.DataFrame:
+    """Rename columns to match REQUIRED_COLS if aliases are present."""
+    rename_map = {}
+    lower_cols = {c.strip().lower(): c for c in df.columns}
+    for target, aliases in COLUMN_ALIASES.items():
+        if target not in df.columns:
+            for a in [target] + aliases:
+                key = a.strip().lower()
+                if key in lower_cols:
+                    rename_map[lower_cols[key]] = target
+                    break
+    return df.rename(columns=rename_map)
+
 @st.cache_data(show_spinner=False)
 def load_csv(path_or_file) -> pd.DataFrame:
-    # Accept file-like or path
+    # Accept file-like or path; try comma then semicolon
     try:
         df = pd.read_csv(path_or_file)
     except Exception:
         df = pd.read_csv(path_or_file, sep=";")
 
-    # Validate required columns
-    for c in REQUIRED_COLS:
-        if c not in df.columns:
-            raise ValueError(f"CSV missing required column: {c}")
+    # Normalize headers and validate
+    df = normalize_columns(df)
+    missing = [c for c in REQUIRED_COLS if c not in df.columns]
+    if missing:
+        raise ValueError(
+            "CSV missing required columns after normalization: "
+            + ", ".join(missing)
+            + ". Expected: Time, HR (bpm), SpO₂ (%), Temp (°C)."
+        )
 
     # Parse time & sort
     df["Time"] = pd.to_datetime(df["Time"], errors="coerce")
@@ -93,7 +119,6 @@ def load_hospitals() -> pd.DataFrame:
     if HOSPITALS_CSV.exists():
         df = pd.read_csv(HOSPITALS_CSV)
         if "iot_enabled" in df.columns:
-            # accept True/False or strings
             df["iot_enabled"] = df["iot_enabled"].astype(str).str.lower().isin(["true", "1", "yes"])
         return df
     return pd.DataFrame(columns=["name","city","ownership","iot_enabled","iot_features","contact","source","verification_status"])
@@ -239,7 +264,7 @@ st.download_button(
     key="dl_alerts_filtered_main"
 )
 
-# Offer figure downloads (MAIN section) — keys must be unique
+# Offer figure downloads (MAIN section) — unique keys & filenames
 st.download_button(
     "Download Heart Rate plot (PNG)",
     fig_bytes(fig_hr),
