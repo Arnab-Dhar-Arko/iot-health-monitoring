@@ -18,6 +18,12 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
+st.info(
+    "This is a thesis prototype for **Analyzing IoT Data for Decision Making** "
+    "(Bangladesh focus). Upload your CSV or use the default sample. "
+    "Repo: https://github.com/Arnab-Dhar-Arko/iot-health-monitoring"
+)
+
 # ----------------------------
 # Constants & Paths
 # ----------------------------
